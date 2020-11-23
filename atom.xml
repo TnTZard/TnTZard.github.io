@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mr Xie</title>
+  
+  <subtitle>talk is cheap, show me your code</subtitle>
+  <link href="http://xieziqi.xyz/atom.xml" rel="self"/>
+  
+  <link href="http://xieziqi.xyz/"/>
+  <updated>2020-11-12T10:00:29.093Z</updated>
+  <id>http://xieziqi.xyz/</id>
+  
+  <author>
+    <name>TnTZard</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker 安装 MongoDB</title>
+    <link href="http://xieziqi.xyz/2020/11/12/docker%20%E5%AE%89%E8%A3%85%20MongoDB/"/>
+    <id>http://xieziqi.xyz/2020/11/12/docker%20%E5%AE%89%E8%A3%85%20MongoDB/</id>
+    <published>2020-11-12T09:37:52.328Z</published>
+    <updated>2020-11-12T10:00:29.093Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="环境：阿里云ECS-Ubuntu-16-04"><a href="#环境：阿里云ECS-Ubuntu-16-04" class="headerlink" title="环境：阿里云ECS Ubuntu 16.04"></a>环境：阿里云ECS Ubuntu 16.04</h5><pre class=" language-shell"><code class="language-shell"># 市场里查找mongo镜像docker search mongoDB# 拉取镜像docker pull mongo:latest# 查看已拉取的镜像docker images# 发现有 <none> 镜像 删除~docker rmi -f $(docker images | grep "none" | awk '{print $3}')# 运行 mongo 容器docker run -itd --name mongo -p 27017:27017 mongo --auth# 进入容器内部docker exec -it mongo mongo admin</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;环境：阿里云ECS-Ubuntu-16-04&quot;&gt;&lt;a href=&quot;#环境：阿里云ECS-Ubuntu-16-04&quot; class=&quot;headerlink&quot; title=&quot;环境：阿里云ECS Ubuntu 16.04&quot;&gt;&lt;/a&gt;环境：阿里云ECS Ubuntu 16.</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>git</title>
+    <link href="http://xieziqi.xyz/2020/08/03/git/"/>
+    <id>http://xieziqi.xyz/2020/08/03/git/</id>
+    <published>2020-08-03T02:39:02.082Z</published>
+    <updated>2020-08-03T02:39:02.082Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux</title>
+    <link href="http://xieziqi.xyz/2020/07/31/linux/"/>
+    <id>http://xieziqi.xyz/2020/07/31/linux/</id>
+    <published>2020-07-31T03:26:43.394Z</published>
+    <updated>2020-08-03T07:03:07.818Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre class=" language-shell"><code class="language-shell"># cp命令用来复制文件。下面的命令将文件file1复制到文件file2：cp file1 file2# 下面的命令将多个文件（ file1 ... fileN）复制到目录dir：cp file1 ... fileN dir</code></pre><h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td>exec -it <id> /bin/bash</td><td>进入容器内部</td></tr><tr><td>ps -a</td><td></td></tr><tr><td>ps</td><td></td></tr><tr><td>start</td><td></td></tr><tr><td>restart</td><td></td></tr><tr><td>kill</td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table><pre class=" language-doc"><code class="language-doc"># 在Dockerfile中添加，保持容器和宿主机时间同步RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone设置docker系统启动：systemctl enable docker启动docker:  systemctl start docker查看docker状态： systemctl status docker停止: systemctl stop docker重启: systemctl restart docker查看所有容器列表：docker ps –a查看启动的容器列表：docker ps启动容器：docker start 容器ID或容器名重启容器：docker restart 容器ID或容器名限时关闭容器：docker -t stop 容器ID或容器名,如60秒以内关闭容器：docker -60 stop,容器60秒以内未关闭，则直接关闭容器。直接关闭容器：docker kill 容器ID或容器名删除终止状态的容器：docker rm 容器id删除运行中的容器：docker rm -f 容器id停止所有容器：docker stop $(docker ps -a -q)删除所有终止状态的容器：docker rm $(docker ps -a -q)查看镜像列表：docker images删除镜像：docker rmi <image id> 或者docker rmi 镜像名称：版本（TAG）删除id为none的镜像：docker rmi $(docker images | grep "^<none>" | awk "{print $3}")删除所有未使用的镜像：docker rmi $(docker images -q)查看容器日志：docker logs 容器id</code></pre><h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td>-i</td><td>不区分大小写</td></tr><tr><td>-v</td><td>反转匹配</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table><h2 id="less"><a href="#less" class="headerlink" title="less"></a>less</h2><p>当要查看的文件过大或者内容多得需要滚动屏幕的时候，可以使用less命令。  </p><table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td>b/d</td><td>向前翻一页/向后翻半页</td></tr><tr><td>/&lt;查询字符串&gt;</td><td>向下搜索”字符串”的功能</td></tr><tr><td>?&lt;查询字符串&gt;</td><td>向上搜索”字符串”的功能</td></tr><tr><td>空格键</td><td>滚动一页</td></tr><tr><td>-N</td><td>显示每行的行号</td></tr><tr><td>-o &lt;文件名&gt;</td><td>将less 输出的内容在指定文件中保存起来</td></tr><tr><td>[pagedown]</td><td>向下翻动一页</td></tr><tr><td>[pageup]</td><td>向上翻动一页</td></tr><tr><td>G/g</td><td></td></tr></tbody></table><pre class=" language-shell"><code class="language-shell"># ps查看进程信息并通过less分页显示ps -ef | less# 查看命令历史使用记录并通过less分页显示history | less</code></pre><h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td>-f</td><td>循环读取</td></tr><tr><td>-q</td><td>不显示处理信息</td></tr><tr><td>-v</td><td>显示详细的处理信息</td></tr><tr><td>-c&lt;数目&gt;</td><td>显示的字节数</td></tr><tr><td>-n&lt;行数&gt;</td><td>显示文件的尾部 n 行内容</td></tr><tr><td>-pid</td><td>与-f合用,表示在进程ID,PID死掉之后结束</td></tr><tr><td>-q</td><td>从不输出给出文件名的首部</td></tr><tr><td>-s</td><td>与-f合用,表示在每次反复的间隔休眠S秒</td></tr></tbody></table><pre class=" language-shell"><code class="language-shell">tail -n 100 /etc/cron  #显示最后100行数据tail -n -100 /etc/cron #除了前99行不显示外，显示第100行到末尾行</code></pre><table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td>HOME/END</td><td>移动光标到行首/行尾</td></tr><tr><td>Page Up/Page Down</td><td>上/下翻页</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;cp&quot;&gt;&lt;a href=&quot;#cp&quot; class=&quot;headerlink&quot; title=&quot;cp&quot;&gt;&lt;/a&gt;cp&lt;/h2&gt;&lt;pre class=&quot; language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;# cp命令用来复制文件。下面</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java</title>
+    <link href="http://xieziqi.xyz/2020/06/05/java/"/>
+    <id>http://xieziqi.xyz/2020/06/05/java/</id>
+    <published>2020-06-05T01:36:52.000Z</published>
+    <updated>2020-06-05T01:39:26.190Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="移除-Autowired"><a href="#移除-Autowired" class="headerlink" title="移除@Autowired"></a>移除@Autowired</h1><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span><span class="token annotation punctuation">@Validated</span><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@RequiredArgsConstructor</span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">// final 确保依赖不为null 单例还有线程问题</span>    <span class="token keyword">private</span> <span class="token keyword">final</span> IUserService userService<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;移除-Autowired&quot;&gt;&lt;a href=&quot;#移除-Autowired&quot; class=&quot;headerlink&quot; title=&quot;移除@Autowired&quot;&gt;&lt;/a&gt;移除@Autowired&lt;/h1&gt;&lt;pre class=&quot; language-java&quot;&gt;&lt;code</summary>
+      
+    
+    
+    
+    
+    <category term="java" scheme="http://xieziqi.xyz/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android</title>
+    <link href="http://xieziqi.xyz/2020/06/03/android/"/>
+    <id>http://xieziqi.xyz/2020/06/03/android/</id>
+    <published>2020-06-03T12:33:08.000Z</published>
+    <updated>2020-06-04T13:44:21.101Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="消息提示框"><a href="#消息提示框" class="headerlink" title="消息提示框"></a>消息提示框</h2><pre class=" language-java"><code class="language-java">Toast toast<span class="token operator">=</span>Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> “我是消息Toast”<span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">;</span>toast<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 第一个参数：当前的上下文环境。可用getApplicationContext()或this</span><span class="token comment" spellcheck="true">// 第二个参数：要显示的字符串。也可是R.string中字符串ID</span><span class="token comment" spellcheck="true">// 第三个参数：显示的时间长短。Toast默认的有两个LENGTH_LONG(长)和LENGTH_SHORT(短)，也可以使用毫秒如2000ms</span></code></pre><h2 id="查看安卓手机ip地址"><a href="#查看安卓手机ip地址" class="headerlink" title="查看安卓手机ip地址"></a>查看安卓手机ip地址</h2><pre class=" language-she"><code class="language-she">adb shell ip -f inet addr show wlan0</code></pre><h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// scrollview</span><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">?</span><span class="token operator">></span><span class="token operator">&lt;</span>ScrollView    android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"match_parent"</span>    android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>    android<span class="token operator">:</span>background<span class="token operator">=</span><span class="token string">"@color/colorTheme"</span>    xmlns<span class="token operator">:</span>android<span class="token operator">=</span><span class="token string">"http://schemas.android.com/apk/res/android"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>ScrollView<span class="token operator">></span></code></pre><h2 id="开一个线程"><a href="#开一个线程" class="headerlink" title="开一个线程"></a>开一个线程</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//这里写入子线程需要做的工作</span>        <span class="token function">makeToast</span><span class="token punctuation">(</span><span class="token string">"出库成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><h2 id="自定义ProgressBar"><a href="#自定义ProgressBar" class="headerlink" title="自定义ProgressBar"></a>自定义ProgressBar</h2><pre class=" language-java"><code class="language-java"></code></pre><h2 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h2><pre class=" language-java"><code class="language-java"></code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;消息提示框&quot;&gt;&lt;a href=&quot;#消息提示框&quot; class=&quot;headerlink&quot; title=&quot;消息提示框&quot;&gt;&lt;/a&gt;消息提示框&lt;/h2&gt;&lt;pre class=&quot; language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;Toast</summary>
+      
+    
+    
+    
+    <category term="Markdown" scheme="http://xieziqi.xyz/categories/Markdown/"/>
+    
+    
+    <category term="安卓相关" scheme="http://xieziqi.xyz/tags/%E5%AE%89%E5%8D%93%E7%9B%B8%E5%85%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>springcloud</title>
+    <link href="http://xieziqi.xyz/2020/06/02/springcloud/"/>
+    <id>http://xieziqi.xyz/2020/06/02/springcloud/</id>
+    <published>2020-06-02T02:38:44.000Z</published>
+    <updated>2020-06-02T02:42:22.129Z</updated>
+    
+    <content type="html"><![CDATA[<p>ELK</p><pre class=" language-yam"><code class="language-yam">version: '3'services:   elasticsearch:    image: elasticsearch:6.4.1    container_name: elasticsearch    environment:      - "cluster.name=elasticsearch" #集群名称为elasticsearch      - "discovery.type=single-node" #单节点启动      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"    volumes:      - /az/elasticsearch/plugins:/usr/share/elasticsearch/plugins      - /az/elasticsearch/data:/usr/share/elasticsearch/data    ports:      - 9200:9200  kibana:    image: kibana:6.4.1    container_name: kibana    links:       - elasticsearch:es #配置elasticsearch的域名为es    depends_on:       - elasticsearch    environment:      - "elasticsearch.hosts=http://es:9200"    ports:      - 5601:5601  logstash:    image: logstash:6.4.1    container_name: logstash    volumes:      - /az/logstash/logstash-az.conf:/usr/share/logstash/pipeline/logstash.conf     depends_on:      - elasticsearch    links:       - elasticsearch:es    ports:      - 4560:4560         </code></pre><p>带着变量启动jar包  </p><pre class=" language-sh"><code class="language-sh">java(java命令) -jar(执行jar包命令) xxx.jar(要执行的jar包) --params(参数名)=aaa(参数值) --params2(参数名)=bbb(参数值)java -jar xxx.jar --params=aaa --params=bbb</code></pre><p>参数如下</p><pre class=" language-sh"><code class="language-sh">redis.url=47.112.16.168;rabbitmq.url=127.0.0.1;az-gateway=127.0.0.1;az-monitor-admin=127.0.0.1;az-register=127.0.0.1</code></pre><p>Dockerfile</p><pre class=" language-dockerfile"><code class="language-dockerfile">FROM openjdk:8u212-jreMAINTAINER anzhi 562966183@qq.comCOPY az-auth-1.0-SNAPSHOT.jar /az/az-auth-1.0-SNAPSHOT.jarENTRYPOINT ["java", "-Xmx512m", "-jar", "/az/az-auth-1.0-SNAPSHOT.jar"]COPY az-auth-1.0-SNAPSHOT.jar /az/az-auth-1.0-SNAPSHOT.jar  表示将当前目录（/az/az-auth）az-auth-1.0-SNAPSHOT.jar拷贝到openjdk:8u212-jre镜像里的/az目录下，名称也为az-auth-1.0-SNAPSHOT.jar；# 创建镜像docker build -t xxx .</code></pre><p>删除image，通过image的id来指定删除谁</p><p>docker rmi <image id></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;ELK&lt;/p&gt;
+&lt;pre class=&quot; language-yam&quot;&gt;&lt;code class=&quot;language-yam&quot;&gt;version: &#39;3&#39;
+services: 
+  elasticsearch:
+    image: elasticsearch:6.4.1
+   </summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://xieziqi.xyz/2020/06/01/hello-world/"/>
+    <id>http://xieziqi.xyz/2020/06/01/hello-world/</id>
+    <published>2020-06-01T11:53:35.850Z</published>
+    <updated>2020-06-01T11:53:35.850Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
