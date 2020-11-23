@@ -83,15 +83,15 @@
 
 
 
-<meta name="description" content="环境：阿里云ECS Ubuntu 16.04# 市场里查找mongo镜像 docker search mongoDB # 拉取镜像 docker pull mongo:latest # 查看已拉取的镜像 docker images # 发现有  镜像 删除~ docker rmi -f $(docker images | grep &quot;none&quot; | awk &#39;{print $3}&#39;) # 运行 m">
+<meta name="description" content="环境：阿里云ECS Ubuntu 16.04# 市场里查找mongo镜像 docker search mongoDB # 拉取镜像 docker pull mongo:latest # 查看已拉取的镜像 docker images # 发现有 无用的镜像 删除~ docker rmi -f $(docker images | grep &quot;none&quot; | awk &#39;{print $3}&#39;) # 运行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker 安装 MongoDB">
 <meta property="og:url" content="http://xieziqi.xyz/2020/11/12/docker%20%E5%AE%89%E8%A3%85%20MongoDB/index.html">
 <meta property="og:site_name" content="Mr Xie">
-<meta property="og:description" content="环境：阿里云ECS Ubuntu 16.04# 市场里查找mongo镜像 docker search mongoDB # 拉取镜像 docker pull mongo:latest # 查看已拉取的镜像 docker images # 发现有  镜像 删除~ docker rmi -f $(docker images | grep &quot;none&quot; | awk &#39;{print $3}&#39;) # 运行 m">
+<meta property="og:description" content="环境：阿里云ECS Ubuntu 16.04# 市场里查找mongo镜像 docker search mongoDB # 拉取镜像 docker pull mongo:latest # 查看已拉取的镜像 docker images # 发现有 无用的镜像 删除~ docker rmi -f $(docker images | grep &quot;none&quot; | awk &#39;{print $3}&#39;) # 运行">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-12T09:37:52.328Z">
-<meta property="article:modified_time" content="2020-11-12T10:00:29.093Z">
+<meta property="article:modified_time" content="2020-11-23T02:44:26.290Z">
 <meta property="article:author" content="TnTZard">
 <meta name="twitter:card" content="summary">
 
@@ -187,7 +187,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Home
           </a>
@@ -195,9 +195,9 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             Tags
           </a>
@@ -205,9 +205,9 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             Categories
           </a>
@@ -215,9 +215,9 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             Archives
           </a>
@@ -329,7 +329,7 @@ docker search mongoDB
 docker pull mongo:latest
 # 查看已拉取的镜像
 docker images
-# 发现有 <none> 镜像 删除~
+# 发现有 无用的镜像 删除~
 docker rmi -f $(docker images | grep "none" | awk '{print $3}')
 # 运行 mongo 容器
 docker run -itd --name mongo -p 27017:27017 mongo --auth
@@ -443,7 +443,7 @@ docker exec -it mongo mongo admin
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives">
+                <a href="/archives/%7C%7C%20archive">
               
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
@@ -456,7 +456,7 @@ docker exec -it mongo mongo admin
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -467,7 +467,7 @@ docker exec -it mongo mongo admin
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

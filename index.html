@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Home
           </a>
@@ -192,9 +192,9 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             Tags
           </a>
@@ -202,9 +202,9 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             Categories
           </a>
@@ -212,9 +212,9 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             Archives
           </a>
@@ -330,7 +330,7 @@ docker search mongoDB
 docker pull mongo:latest
 # 查看已拉取的镜像
 docker images
-# 发现有 <none> 镜像 删除~
+# 发现有 无用的镜像 删除~
 docker rmi -f $(docker images | grep "none" | awk '{print $3}')
 # 运行 mongo 容器
 docker run -itd --name mongo -p 27017:27017 mongo --auth
@@ -879,7 +879,7 @@ tail -n -100 /etc/cron #除了前99行不显示外，显示第100行到末尾行
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/06/05/java/" itemprop="url">java</a></h1>
+                <a class="post-title-link" href="/2020/06/05/java/" itemprop="url">Spring的注解相关</a></h1>
         
 
         <div class="post-meta">
@@ -901,6 +901,28 @@ tail -n -100 /etc/cron #除了前99行不显示外，显示第100行到末尾行
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -941,6 +963,7 @@ tail -n -100 /etc/cron #除了前99行不显示外，显示第100行到末尾行
     <span class="token keyword">private</span> <span class="token keyword">final</span> IUserService userService<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<p>hello</p>
 
           
         
@@ -1043,8 +1066,8 @@ tail -n -100 /etc/cron #除了前99行不显示外，显示第100行到末尾行
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Markdown/" itemprop="url" rel="index">
-                    <span itemprop="name">Markdown</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -1494,7 +1517,7 @@ docker build -t xxx .</code></pre>
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives">
+                <a href="/archives/%7C%7C%20archive">
               
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
@@ -1507,7 +1530,7 @@ docker build -t xxx .</code></pre>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1518,7 +1541,7 @@ docker build -t xxx .</code></pre>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
