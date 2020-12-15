@@ -6,7 +6,7 @@
   <link href="http://xieziqi.xyz/atom.xml" rel="self"/>
   
   <link href="http://xieziqi.xyz/"/>
-  <updated>2020-11-23T02:44:26.290Z</updated>
+  <updated>2020-12-15T08:50:38.919Z</updated>
   <id>http://xieziqi.xyz/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自定义SpringBoot-Starter</title>
+    <link href="http://xieziqi.xyz/2020/12/15/%E8%87%AA%E5%AE%9A%E4%B9%89SpringBoot-Starter/"/>
+    <id>http://xieziqi.xyz/2020/12/15/%E8%87%AA%E5%AE%9A%E4%B9%89SpringBoot-Starter/</id>
+    <published>2020-12-15T08:46:50.000Z</published>
+    <updated>2020-12-15T08:50:38.919Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用IDEA 2020.1.1</p><p>1.首先可以任意新建一个project，<img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201215164916670.png" alt="image-20201215164916670"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;使用IDEA 2020.1.1&lt;/p&gt;
+&lt;p&gt;1.首先可以任意新建一个project，&lt;img src=&quot;C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-2020121</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>docker 安装 MongoDB</title>
