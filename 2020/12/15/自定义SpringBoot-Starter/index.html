@@ -83,19 +83,20 @@
 
 
 
-<meta name="description" content="使用IDEA 2020.1.1 1.首先可以任意新建一个project，">
+<meta name="description" content="使用工具IDEA 2020.1.1 1.首先任意创建一个project，使用Spring initializer即可  2.接下来正常取名，一直next就可以了 3.项目成功后，删除一些不必要的部分，例如mvn、test文件夹等 4.有了一个清爽的项目结构后，创建三个文件夹：configure, properties, service，并且在resources文件夹下创建文件夹META-INF，继">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义SpringBoot-Starter">
 <meta property="og:url" content="http://xieziqi.xyz/2020/12/15/%E8%87%AA%E5%AE%9A%E4%B9%89SpringBoot-Starter/index.html">
 <meta property="og:site_name" content="Mr Xie">
-<meta property="og:description" content="使用IDEA 2020.1.1 1.首先可以任意新建一个project，">
+<meta property="og:description" content="使用工具IDEA 2020.1.1 1.首先任意创建一个project，使用Spring initializer即可  2.接下来正常取名，一直next就可以了 3.项目成功后，删除一些不必要的部分，例如mvn、test文件夹等 4.有了一个清爽的项目结构后，创建三个文件夹：configure, properties, service，并且在resources文件夹下创建文件夹META-INF，继">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201215164916670.png">
-<meta property="article:published_time" content="2020-12-15T08:46:50.000Z">
-<meta property="article:modified_time" content="2020-12-15T08:50:38.919Z">
+<meta property="og:image" content="http://xieziqi.xyz/.xyz//1.png">
+<meta property="og:image" content="http://xieziqi.xyz/.xyz//2.png">
+<meta property="article:published_time" content="2020-12-15T09:00:38.000Z">
+<meta property="article:modified_time" content="2020-12-15T09:11:58.037Z">
 <meta property="article:author" content="TnTZard">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201215164916670.png">
+<meta name="twitter:image" content="http://xieziqi.xyz/.xyz//1.png">
 
 
 
@@ -287,7 +288,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-15T16:46:50+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-15T17:00:38+08:00">
                 2020-12-15
               </time>
             
@@ -325,8 +326,31 @@
       
 
       
-        <p>使用IDEA 2020.1.1</p>
-<p>1.首先可以任意新建一个project，<img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201215164916670.png" alt="image-20201215164916670"></p>
+        <p>使用工具IDEA 2020.1.1</p>
+<p>1.首先任意创建一个project，使用Spring initializer即可</p>
+<p><img src="/.xyz//1.png" alt="1"></p>
+<p>2.接下来正常取名，一直next就可以了</p>
+<p>3.项目成功后，删除一些不必要的部分，例如mvn、test文件夹等</p>
+<p>4.有了一个清爽的项目结构后，创建三个文件夹：configure, properties, service，并且在resources文件夹下创建文件夹META-INF，继续在里面创建spring.factories文件，如下图所示</p>
+<p><img src="/.xyz//2.png" alt="2"></p>
+<p>5.在pom.xml引入</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+  <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+  <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+<span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+   <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+   <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>configuration<span class="token operator">-</span>processor<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+   <span class="token operator">&lt;</span>optional<span class="token operator">></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>optional<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
+<p>6.编写starter所需的properties文件，下面是sms短信服务例子</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"sms"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SmsProperties</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String accessKeyId<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String accessKeySecret<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>上面省略setter/getter方法，用到了@ConfigurationProperties注解，规定了两个属性：accessKeyId和accessKeySecret</p>
+<p>7.</p>
 
       
     </div>
@@ -351,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/11/12/docker%20%E5%AE%89%E8%A3%85%20MongoDB/" rel="next" title="docker 安装 MongoDB">
-                <i class="fa fa-chevron-left"></i> docker 安装 MongoDB
+              <a href="/2020/12/15/docker-compose%E5%AE%9E%E7%8E%B0mysql/" rel="next" title="docker-compose实现mysql">
+                <i class="fa fa-chevron-left"></i> docker-compose实现mysql
               </a>
             
           </div>
@@ -427,7 +451,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

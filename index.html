@@ -284,7 +284,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-15T16:46:50+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-15T17:00:38+08:00">
                 2020-12-15
               </time>
             
@@ -324,8 +324,151 @@
       
         
           
-            <p>使用IDEA 2020.1.1</p>
-<p>1.首先可以任意新建一个project，<img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201215164916670.png" alt="image-20201215164916670"></p>
+            <p>使用工具IDEA 2020.1.1</p>
+<p>1.首先任意创建一个project，使用Spring initializer即可</p>
+<p><img src="/.xyz//1.png" alt="1"></p>
+<p>2.接下来正常取名，一直next就可以了</p>
+<p>3.项目成功后，删除一些不必要的部分，例如mvn、test文件夹等</p>
+<p>4.有了一个清爽的项目结构后，创建三个文件夹：configure, properties, service，并且在resources文件夹下创建文件夹META-INF，继续在里面创建spring.factories文件，如下图所示</p>
+<p><img src="/.xyz//2.png" alt="2"></p>
+<p>5.在pom.xml引入</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+  <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+  <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+<span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+   <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+   <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>configuration<span class="token operator">-</span>processor<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+   <span class="token operator">&lt;</span>optional<span class="token operator">></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>optional<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
+<p>6.编写starter所需的properties文件，下面是sms短信服务例子</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"sms"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SmsProperties</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String accessKeyId<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String accessKeySecret<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>上面省略setter/getter方法，用到了@ConfigurationProperties注解，规定了两个属性：accessKeyId和accessKeySecret</p>
+<p>7.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xieziqi.xyz/2020/12/15/docker-compose%E5%AE%9E%E7%8E%B0mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TnTZard">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr Xie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/15/docker-compose%E5%AE%9E%E7%8E%B0mysql/" itemprop="url">docker-compose实现mysql</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-15T16:57:16+08:00">
+                2020-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/.xyz//1.png" alt="1"></p>
 
           
         
@@ -708,7 +851,7 @@ cp file1 ... fileN dir</code></pre>
 </tr>
 </thead>
 <tbody><tr>
-<td>exec -it <id> /bin/bash</td>
+<td>exec -it <id> /bin/bash</id></td>
 <td>进入容器内部</td>
 </tr>
 <tr>
@@ -1430,7 +1573,7 @@ COPY az-auth-1.0-SNAPSHOT.jar /az/az-auth-1.0-SNAPSHOT.jar  表示将当前目�
 # 创建镜像
 docker build -t xxx .</code></pre>
 <p>删除image，通过image的id来指定删除谁</p>
-<p>docker rmi <image id></p>
+<p>docker rmi <image id></image></p>
 
           
         
@@ -1640,7 +1783,7 @@ docker build -t xxx .</code></pre>
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
