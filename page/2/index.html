@@ -85,7 +85,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mr Xie">
-<meta property="og:url" content="http://xieziqi.xyz/tags/JAVA/index.html">
+<meta property="og:url" content="http://xieziqi.xyz/page/2/index.html">
 <meta property="og:site_name" content="Mr Xie">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="TnTZard">
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://xieziqi.xyz/tags/JAVA/"/>
+  <link rel="canonical" href="http://xieziqi.xyz/page/2/"/>
 
 
 
 
 
-  <title>Tag: JAVA | Mr Xie</title>
+  <title>Mr Xie</title>
   
 
 
@@ -144,7 +144,8 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,111 +238,323 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
 
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>JAVA<small>Tag</small>
-        </h1>
-      </div>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xieziqi.xyz/2020/06/02/springcloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TnTZard">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr Xie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/02/springcloud/" itemprop="url">springcloud</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-02T10:38:44+08:00">
+                2020-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
 
       
         
+          
+            <p>ELK</p>
+<pre class=" language-yam"><code class="language-yam">version: '3'
+services: 
+  elasticsearch:
+    image: elasticsearch:6.4.1
+    container_name: elasticsearch
+    environment:
+      - "cluster.name=elasticsearch" #集群名称为elasticsearch
+      - "discovery.type=single-node" #单节点启动
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - /az/elasticsearch/plugins:/usr/share/elasticsearch/plugins
+      - /az/elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+  kibana:
+    image: kibana:6.4.1
+    container_name: kibana
+    links: 
+      - elasticsearch:es #配置elasticsearch的域名为es
+    depends_on: 
+      - elasticsearch
+    environment:
+      - "elasticsearch.hosts=http://es:9200"
+    ports:
+      - 5601:5601
+  logstash:
+    image: logstash:6.4.1
+    container_name: logstash
+    volumes:
+      - /az/logstash/logstash-az.conf:/usr/share/logstash/pipeline/logstash.conf 
+    depends_on:
+      - elasticsearch
+    links: 
+      - elasticsearch:es
+    ports:
+      - 4560:4560         
+</code></pre>
+<p>带着变量启动jar包  </p>
+<pre class=" language-sh"><code class="language-sh">java(java命令) -jar(执行jar包命令) xxx.jar(要执行的jar包) --params(参数名)=aaa(参数值) --params2(参数名)=bbb(参数值)
+java -jar xxx.jar --params=aaa --params=bbb</code></pre>
+<p>参数如下</p>
+<pre class=" language-sh"><code class="language-sh">redis.url=47.112.16.168;
+rabbitmq.url=127.0.0.1;
+az-gateway=127.0.0.1;
+az-monitor-admin=127.0.0.1;
+az-register=127.0.0.1</code></pre>
+<p>Dockerfile</p>
+<pre class=" language-dockerfile"><code class="language-dockerfile">FROM openjdk:8u212-jre
+MAINTAINER anzhi 562966183@qq.com
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+COPY az-auth-1.0-SNAPSHOT.jar /az/az-auth-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java", "-Xmx512m", "-jar", "/az/az-auth-1.0-SNAPSHOT.jar"]
 
-      <h2 class="post-title">
+COPY az-auth-1.0-SNAPSHOT.jar /az/az-auth-1.0-SNAPSHOT.jar  表示将当前目录（/az/az-auth）az-auth-1.0-SNAPSHOT.jar拷贝到openjdk:8u212-jre镜像里的/az目录下，名称也为az-auth-1.0-SNAPSHOT.jar；
+
+
+# 创建镜像
+docker build -t xxx .</code></pre>
+<p>删除image，通过image的id来指定删除谁</p>
+<p>docker rmi <image id></image></p>
+
+          
         
-            <a class="post-title-link" href="/2021/01/07/%E6%B5%85%E8%B0%88HashMap/" itemprop="url">
-              
-                <span itemprop="name">浅谈HashMap</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-01-07T20:46:26+08:00"
-              content="2021-01-07" >
-          01-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/01/07/%E5%85%B3%E4%BA%8Ejava%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6/" itemprop="url">
-              
-                <span itemprop="name">关于java中的逻辑操作符</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-01-07T11:46:15+08:00"
-              content="2021-01-07" >
-          01-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/06/05/java/" itemprop="url">
-              
-                <span itemprop="name">Spring的注解相关</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-06-05T09:36:52+08:00"
-              content="2020-06-05" >
-          06-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
   
   
   
+  </article>
+
+
+    
+      
 
   
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xieziqi.xyz/2020/06/01/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TnTZard">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr Xie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/01/hello-world/" itemprop="url">Hello World</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-01T19:53:35+08:00">
+                2020-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
