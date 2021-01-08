@@ -323,7 +323,50 @@
 
       
         
-          <h1 id="浅谈HashMap"><a href="#浅谈HashMap" class="headerlink" title="浅谈HashMap"></a>浅谈HashMap</h1><h2 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h2>
+          <h1 id="浅谈HashMap"><a href="#浅谈HashMap" class="headerlink" title="浅谈HashMap"></a>浅谈HashMap</h1><h2 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h2><p>取数组和链表的优，减少Hash的劣</p>
+<h4 id="关于Hash算法和Hash表结构"><a href="#关于Hash算法和Hash表结构" class="headerlink" title="关于Hash算法和Hash表结构"></a>关于Hash算法和Hash表结构</h4><p>Hash也叫做散列，哈希。基本原理就是把任意长度的输入，通过Hash算法变成固定长度的输出。</p>
+<p>一些经典的Hash算法：MD5、SHA</p>
+<p>Hash算法的要求：1.从Hash值不可以反向推导出原始的数据。2.输入数据的微小变化会得到完全不同的hash值，相同的数据得到相同的值。3.Hash算法的执行效率要高效，长的文本也能快速地计算出Hash值。4.Hash算法的冲突概率要小</p>
+<h5 id="为什么会冲突"><a href="#为什么会冲突" class="headerlink" title="为什么会冲突?"></a>为什么会冲突?</h5><p>抽屉原理，</p>
+<h5 id="Hash碰撞的解决方案"><a href="#Hash碰撞的解决方案" class="headerlink" title="Hash碰撞的解决方案"></a>Hash碰撞的解决方案</h5><p>首先明确的一点是：<strong>Hash算法是一定会有冲突的</strong></p>
+<h6 id="链地址法"><a href="#链地址法" class="headerlink" title="链地址法"></a>链地址法</h6><p>链表地址法是使用了一个链表数组，来存储相应的数据，当hash遇到冲突的时候依次添加到链表的后面进行处理</p>
+<pre><code class="java">添加一个元素的时候，首先计算元素key的Hash值，确定插入数组中的位置。如果当前位置下没有重复数据，则直接添加到当前位置。当遇到冲突的时候，添加到同一个hash值的元素后面，形成一个链表。这个链表的特点是同一个链表上的hash值相同。JDK1.8中，针对链表上的数据超过8条时，使用了红黑树进行优化。</code></pre>
+<p>JAVA中的HashMap使用的就是这种方法</p>
+<h6 id="开放地址法"><a href="#开放地址法" class="headerlink" title="开放地址法"></a>开放地址法</h6><p>简单介绍下，之后再去学习看看</p>
+<p>一旦发生冲突，就去寻找下一个空的 散列表地址，只要散列表足够大，空的散列地址总能找到</p>
+<h4 id="1-7-vs-1-8"><a href="#1-7-vs-1-8" class="headerlink" title="1.7 vs 1.8"></a>1.7 vs 1.8</h4><p>简而言之，1.7就是简单的实现了数组加链表的结构，但是存在一些问题和安全隐患，其实JDK明确说明了HashMap是线程不安全的，不适用于多线程的环境中，但是1.7的HashMap在多线程下的使用发生问题的概率很大，其中比较常见的一个问题就是死锁，造成死锁的原因在于：在修改HashMap时，可能会进行扩容操作，而1.7的扩容操作是<strong>头插法</strong>（看到网上都是这种说法）,在改变某一个桶中链表元素的位置时，后移动的放在了前面的前头，意思就是两个数据的位置交换了，就有可能头尾相连一直顺着查下去，造成死锁。</p>
+<p>当然这不是JDK的锅，明明强调了不能在多线程下使用。</p>
+<p>这个问题在1.8中得到优化，但是HashMap仍然不是线程安全的，多线程下请移步ConcurrentHashMap。</p>
+<h4 id="常量的定义"><a href="#常量的定义" class="headerlink" title="常量的定义"></a>常量的定义</h4><pre><code class="java">/**
+     * The default initial capacity - MUST be a power of two.
+     */
+// 默认容量
+static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16
+
+/**
+     * The maximum capacity, used if a higher value is implicitly specified
+     * by either of the constructors with arguments.
+     * MUST be a power of two &lt;= 1&lt;&lt;30.
+     */
+// 最大容量
+static final int MAXIMUM_CAPACITY = 1 &lt;&lt; 30;
+
+/**
+     * The load factor used when none specified in constructor.
+     */
+// 默认负载因子
+static final float DEFAULT_LOAD_FACTOR = 0.75f;
+
+/**
+     * The bin count threshold for using a tree rather than list for a
+     * bin.  Bins are converted to trees when adding an element to a
+     * bin with at least this many nodes. The value must be greater
+     * than 2 and should be at least 8 to mesh with assumptions in
+     * tree removal about conversion back to plain bins upon
+     * shrinkage.
+     */
+// 树化阈值
+static final int TREEIFY_THRESHOLD = 8;</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/01/07/%E6%B5%85%E8%B0%88HashMap/#more" rel="contents">
