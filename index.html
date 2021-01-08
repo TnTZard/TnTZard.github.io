@@ -1216,7 +1216,7 @@ docker exec -it mongo mongo admin
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xieziqi.xyz/2020/07/31/linux/">
+    <link itemprop="mainEntityOfPage" href="http://xieziqi.xyz/2020/06/05/java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TnTZard">
@@ -1235,7 +1235,7 @@ docker exec -it mongo mongo admin
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/31/linux/" itemprop="url">linux</a></h1>
+                <a class="post-title-link" href="/2020/06/05/java/" itemprop="url">Spring的注解相关</a></h1>
         
 
         <div class="post-meta">
@@ -1247,8 +1247,8 @@ docker exec -it mongo mongo admin
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-31T11:26:43+08:00">
-                2020-07-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-05T09:36:52+08:00">
+                2020-06-05
               </time>
             
 
@@ -1287,7 +1287,137 @@ docker exec -it mongo mongo admin
       
         
           
-            <h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre class=" language-shell"><code class="language-shell"># cp命令用来复制文件。下面的命令将文件file1复制到文件file2：
+            <h1 id="移除-Autowired"><a href="#移除-Autowired" class="headerlink" title="移除@Autowired"></a>移除@Autowired</h1><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@Validated</span>
+<span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequiredArgsConstructor</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// final 确保依赖不为null 单例还有线程问题</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> IUserService userService<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>hello</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xieziqi.xyz/2020/06/05/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TnTZard">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr Xie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/05/linux/" itemprop="url">linux</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-05T09:36:52+08:00">
+                2020-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre class=" language-shell"><code class="language-shell"># cp命令用来复制文件。下面的命令将文件file1复制到文件file2：
 cp file1 file2
 # 下面的命令将多个文件（ file1 ... fileN）复制到目录dir：
 cp file1 ... fileN dir</code></pre>
@@ -1572,158 +1702,6 @@ tail -n -100 /etc/cron #除了前99行不显示外，显示第100行到末尾行
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xieziqi.xyz/2020/06/05/java/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="TnTZard">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mr Xie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/05/java/" itemprop="url">Spring的注解相关</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-05T09:36:52+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="移除-Autowired"><a href="#移除-Autowired" class="headerlink" title="移除@Autowired"></a>移除@Autowired</h1><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
-<span class="token annotation punctuation">@Validated</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequiredArgsConstructor</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// final 确保依赖不为null 单例还有线程问题</span>
-    <span class="token keyword">private</span> <span class="token keyword">final</span> IUserService userService<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>hello</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xieziqi.xyz/2020/06/03/android/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1943,7 +1921,7 @@ toast<span class="token punctuation">.</span><span class="token function">show</
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
